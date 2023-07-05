@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Calculadora de Gastos</title>
+    <link rel="stylesheet" href="style.css" />
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&display=swap" rel="stylesheet">
+
+    <script type="text/javascript">
+        emailjs.init('DzxvFptC-euqP_5ij')
+    </script>
+
+</head>
+
+
+<!--PARA LA ENTREGA SE MODIFICA eliminando las siguientes líneas:
+
+Líneas que contienen console.log.
+Líneas que contienen alert.
+Líneas que contienen input.
+También he realizado algunas correcciones menores en la estructura del código para asegurar su correcta funcionalidad.-->
+
+
+<body>
+    <header id="header">
+        <div class="header-container">
+            <img src="./imagenes/calculadoralogo.png" alt="Logo de DiviGasto">
+        </div>
+    </header>
+
+
+    <main>
+        <section class="instrucciones">
+            <h2>Instrucciones</h2>
+            <p>
+                Ingresa el total a pagar y la cantidad de personas que van a dividir el gasto.
+                Luego, haz clic en el botón "Calcular" para obtener la cantidad que cada persona debe pagar.
+            </p>
+
+
+            <h2>Calculadora de Gastos</h2>
+            <form>
+                <label for="total">Total a Pagar:</label>
+                <input type="number" id="total" name="total" required />
+
+                <label for="personas">Cantidad de Personas:</label>
+                <input type="number" id="personas" name="personas" required />
+
+                <button type="button" onclick="calcular()">Calcular</button>
+                <button type="reset" class="btn btn-secondary" onclick="resetCalculator()">Reiniciar</button>
+
+
+            </form>
+
+            <div id="resultado-container" class="resultado-container">
+                <p id="resultado"></p>
+            </div>
+
+            <!--El usuario puede decidir o no , agregar propina al calculo final-->
+            <section>
+                <h2>Propinas</h2>
+                <label for="propina">Porcentaje de propina:</label>
+                <select id="propina" name="propina">
+                    <option value="0">0%</option>
+                    <option value="5">5%</option>
+                    <option value="10">10%</option>
+                    <option value="15">15%</option>
+                    <option value="20">20%</option>
+                </select>
+                <button type="button" onclick="calcularConPropina()">Calcular con propina</button>
+
+                <div class="container">
+                    <section class="contenido-principal">
+                        <div class="row">
+                            <div class="col">
+                                <div class="contenido primario">
+                                    <h2 class="text-center">Añade tus gastos Por Items</h2>
+                                    <form id="agregar-gasto" action="#">
+                                        <div class="form-group">
+                                            <label for="gasto">Gasto:</label>
+                                            <input type="text" class="form-control" id="gasto"
+                                                placeholder="Nombre Gasto">
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="cantidad">Cantidad:</label>
+                                            <input type="text" class="form-control" id="cantidad"
+                                                placeholder="Cantidad en $">
+                                        </div>
+
+                                        <button type="submit" class="btn btn-primary">Agregar</button>
+                                    </form>
+
+                                </div>
+                                <!--.contenido-->
+                            </div>
+                            <!--.col-->
+
+                            <div class="col">
+                                <div class="contenido secundario">
+
+                                    <h2 class="text-center">Listado</h2>
+
+                                    <div id="gastos">
+                                        <ul class="list-group"></ul>
+                                    </div>
+                                    <div class="restante alert alert-success">
+                                        <p>Restante: $ <span id="restante"></span></p>
+                                    </div>
+                                </div>
+                                <!--.presupuesto-->
+                            </div>
+                            <!--.contenido-->
+                        </div>
+                        <!--.col-->
+                </div>
+                <!--.row-->
+            </section>
+            </div>
+
+            <div class="box">
+                <div class="lightbar"></div>
+                <div class="top-layer"></div>
+
+                <h2>
+                    ¿quiere saber el clima?
+                </h2>
+            </div>
+
+
+            <!--Se realiza con Consumo de Api linea para clima en correcta ubicacion (a mi parecer)-->
+            <div class="search-form">
+                <form id="search-form">
+                    <div class="searchbox">
+                        <input type="text" autocomplete="off" placeholder="Buscar ciudad..." class="search"
+                            id="searchbox" />
+                    </div>
+                </form>
+            </div>
+            <div class="weather-card" id="card">
+                <div class="city" id="city">Buenos Aires, Arg</div>
+                <div class="date" id="date">2023</div>
+                <div class="temperature">
+                    <img src="imagenes/temp-mid.png" class="temp-img" id="temp-img" />
+                    <div class="temp" id="temp">14°</div>
+                </div>
+                <div class="weather" id="weather">Sol</div>
+                <div class="range" id="range">12° / 18°</div>
+            </div>
+
+            <!--Lo vi en la guia de actividades y me gusto , para agregar al proyecto, esta completamente funcional-->
+        </section>
+        <form id="form">
+            <div class="field">
+                <label for="from_name">Nombre completo</label>
+                <input type="text" name="from_name" id="from_name">
+            </div>
+            <div class="field">
+                <label for="message">Mensaje</label>
+                <input type="text" name="message" id="message">
+            </div>
+            <div class="field">
+                <label for="email_id">Tu correo</label>
+                <input type="text" name="email_id" id="email_id">
+            </div>
+            <input type="submit" id="button" value="Send Email">
+        </form>
+
+
+        <!--Agrego, el boton whatsapp. La idea es que los participantes puedan compartir todos los datos cargados y quede un registro a cada participante. Se finalizara en proxima entrega, lo dejo me gusta como queda-->
+        <button type="button" onclick="compartir()" class="compartir-btn">WhatsApp</button>
+
+        <script>
+            function compartir() {
+                var telefono = "123456789"; // Reemplaza con el número de teléfono del usuario actual
+
+                // Genera el enlace con el número de teléfono y el mensaje personalizado
+                var enlace = "https://wa.me/" + telefono + "?text=Hola,%20quiero%20compartir%20los%20datos%20cargados.";
+
+                // Abre el enlace en una nueva pestaña
+                window.open(enlace, "_blank");
+            }
+        </script>
+
+        <style>
+            .compartir-btn {
+                background-color: #00bb2d;
+                color: white;
+                padding: 14px 30px;
+                border-radius: 25px;
+                font-size: 16px;
+                cursor: pointer;
+                transition: all 0.2s ease-in-out;
+            }
+
+            .compartir-btn:hover {
+                background-color: #fbd28b;
+                color: black;
+            }
+        </style>
+
+        <!--Explicacion a usuario-->
+        <section>
+            <h2>¿Para Qué Sirve Esta Calculadora?</h2>
+            <p>
+                Esta calculadora te permite dividir el costo total de una cuenta entre un grupo de personas. Es
+                útil
+                cuando estás saliendo a comer con amigos o familiares y necesitas dividir la cuenta de forma
+                equitativa.
+                En lugar de calcular manualmente la cantidad que cada persona debe pagar, esta calculadora lo
+                hace
+                por
+                ti en segundos.
+                <h5>Ademas te permite agregar gastos Extras</h5>
+                <h5>Ahora También consultar el clima</h5>
+            </p>
+        </section>
+    </main>
+
+
+    <!--Se agrega (Footer) para la Segunda entrega.-->
+
+    <footer id="footer">
+        <div class="footer-container">
+            <p>© 2023 DiviGasto. Todos los derechos reservados.</p>
+        </div>
+    </footer>
+
+
+
+    <script src="script.js" defer></script>
+
+
+
+
+</body>
+
+
+</html>

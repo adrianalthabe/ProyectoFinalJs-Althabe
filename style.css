@@ -1,0 +1,388 @@
+/* Estilos para dispositivos móviles */
+@media screen and (max-width: 767px) {
+    body {
+        font-size: 16px;
+        line-height: 1.5;
+    }
+
+    header {
+        text-align: center;
+    }
+
+    h1 {
+        font-size: 32px;
+        margin: 20px 0;
+    }
+
+    main {
+        padding: 20px;
+    }
+
+    section {
+        margin-bottom: 40px;
+    }
+
+    h2 {
+        font-size: 24px;
+        margin: 20px 0;
+    }
+
+    p {
+        font-size: 18px;
+        margin-bottom: 20px;
+    }
+
+    label {
+        display: block;
+        font-size: 18px;
+        margin-bottom: 10px;
+    }
+
+    input[type="number"],
+    button {
+
+        transition: background-color 0.3s ease;
+        margin-top: 15px;
+        padding: 20px;
+        border-radius: 20px;
+        box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.1);
+        cursor: pointer;
+    }
+
+    button:hover {
+        background-color: black;
+        color: #fbd28b;
+    }
+}
+
+.resultado-container {
+    margin: 15px;
+    font-size: 24px;
+    font-weight: 700;
+    text-align: center;
+    color: #297373;
+}
+
+
+/* Estilo para el contenedor de los elementos */
+
+
+.contenido-principal {
+    background-color: #353535;
+    border-radius: 20px;
+}
+
+.presupuesto p {
+    margin-bottom: 0;
+    font-weight: bold;
+}
+
+.presupuesto p span {
+    font-weight: normal;
+}
+
+#gastos {
+    margin-bottom: 30px;
+}
+
+input[type=text],
+select {
+    display: inline-block;
+    width: auto;
+    font-size: 15px;
+    padding: 15px;
+    border: solid 2px;
+    border-radius: 14px;
+    margin-bottom: 30px;
+    box-shadow: 10px 8px 7px rgba(0, 0, 0, 0.1);
+}
+
+
+
+/* Estilos para dispositivos de escritorio */
+@media screen and (min-width: 768px) {
+    body {
+        font-size: 18px;
+        line-height: 1.6;
+    }
+
+    header {
+        text-align: center;
+    }
+
+    h1 {
+        font-size: 48px;
+        margin: 50px 0;
+    }
+
+    main {
+        max-width: 800px;
+        margin: 0 auto;
+        padding: 50px;
+    }
+
+    section {
+        margin-bottom: 80px;
+    }
+
+
+    h2 {
+        font-size: 36px;
+        margin-bottom: 30px;
+    }
+
+    p {
+        font-size: 20px;
+        margin-bottom: 30px;
+        text-align: center;
+    }
+
+    label {
+        display: block;
+        font-size: 20px;
+        margin-bottom: 20px;
+    }
+
+    input[type="number"],
+    button {
+        display: inline-block;
+        width: auto;
+        font-size: 20px;
+        padding: 15px;
+        border: solid 2px;
+        border-radius: 14px;
+        margin-bottom: 30px;
+        box-shadow: 10px 8px 7px rgba(0, 0, 0, 0.1);
+    }
+
+    button {
+        background-color: #297373;
+        color: white;
+        cursor: pointer;
+    }
+
+    .resultado-container {
+        font-size: 36px;
+        font-weight: 700;
+        text-align: center;
+        color: #297373;
+    }
+
+    textarea {
+        padding: 10px;
+        border-radius: 5px;
+        border: 1px solid #ccc;
+        margin-bottom: 20px;
+        font-size: 16px;
+        width: 400px;
+        height: 100px;
+    }
+
+}
+
+/* Estilos generales */
+body {
+    font-family: monospace;
+    color: #FF8552;
+    background-color: #39393A;
+}
+
+#header {
+    position: inherit;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background-color: #FF8552;
+    transition: background-color 0.5s ease;
+}
+
+#header.scrolled {
+    background-color: #fff;
+}
+
+.header-container {
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 0px 0;
+}
+
+h1 {
+    margin: 0;
+    font-size: 36px;
+    color: #fff;
+    text-align: center;
+}
+
+
+main {
+    text-align: center;
+}
+
+button {
+    transition: background-color 0.3s ease;
+    margin-top: 50px;
+}
+
+button:hover {
+    background-color: black;
+    color: #fbd28b;
+}
+
+.resultado-container {
+    margin: 50px;
+    background-color: #fbd28b;
+    border-radius: 5px;
+    padding: 28px;
+    box-shadow: 14px 28px 12px rgba(0, 0, 0, 0.1);
+    border: 3px solid #297373;
+    transition: all 0.3s ease;
+    /* Agregamos una transición para que el borde tenga una animación */
+}
+
+/* Agregamos estilos para cuando el mouse esté encima de la sección resultado-container */
+.resultado-container:hover {
+    background-color: #f7f7f7;
+    border-color: #fbd28b;
+    box-shadow: 0px 28px 8px rgba(0, 0, 0, 0.2);
+    transform: translateY(-5px);
+    -webkit-transform: translateY(-5px);
+}
+
+.instrucciones {
+    border: 2px solid #fbd28b;
+    padding: 10px;
+    border-radius: 30px;
+    box-shadow: 0px 0px 10px #fbd28b;
+    opacity: 0;
+    /*Inicialmenteelelementoestáoculto*/
+    animation: fadein 3s;
+    /*Animaciónconduraciónde2segundos*/
+    -webkit-animation: fadein 3s;
+}
+
+@keyframes fadein {
+    from {
+        opacity: 0;
+    }
+
+    /* Empieza con opacidad 0 */
+    to {
+        opacity: 1;
+    }
+
+    /* Termina con opacidad 1 */
+}
+
+select[name="propina"] {
+    background-color: #E6E6E6;
+    transition: background-color 0.5s ease-in-out;
+    font-size: 1.2rem;
+}
+
+select {
+    padding: 5px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    margin-bottom: 20px;
+    font-size: 16px;
+    width: 200px;
+}
+
+input[type="submit"] {
+    padding: 6px 30px;
+    font-size: 14px;
+    background-color: #4460AA;
+    color: #fff;
+    cursor: pointer;
+    
+}
+
+/* PARA PROYECTO FINAL SE AGREGA ESTILO AL CLIMA CON CSS COMO PIDIO EL PROFESOR EN VIDEO */
+
+.search-form {
+    margin: 20px 20px;
+}
+
+.searchbox {
+    padding: 10px 20px;
+    background-color: var(--text-color);
+    max-width: 480px;
+    margin: 0px auto;
+    border-radius: 3px;
+}
+
+.search {
+    width: 100%;
+    background-color: #fbd28b;
+    border: none;
+    font-size: 1rem;
+}
+
+.search:focus {
+    outline: none;
+}
+
+.weather-card {
+    margin: 20px 20px;
+    background: var(--text-color);
+    color: var(--bg-color);
+    padding: 20px;
+    text-align: center;
+    border-radius: 3px;
+    display: none;
+}
+
+.city {
+    font-size: 2.5rem;
+    text-transform: uppercase;
+    margin-bottom: 0.5rem;
+}
+
+.date {
+    font-size: 0.9rem;
+    margin-bottom: 2rem;
+}
+
+
+.temperature {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 2rem;
+}
+
+.temp-img {
+    width: 50px;
+    margin-right: 10px;
+}
+
+.temp {
+    font-size: 2.2rem;
+    font-weight: bold;
+}
+
+.weather {
+    font-size: 1.8rem;
+    margin-bottom: 1rem;
+}
+
+
+/*Efectito*/
+.box h2 {
+    color: #39393A;
+    text-shadow: 0 0 10px #fbd28b,
+        0 0 20px #fbd28b;
+}
+
+/* Pie de página (tambien) se agrega para proyecto final, se ve mejor */
+footer {
+    background-color: #FF8552;
+    padding: 20px;
+    text-align: center;
+}
+
+footer p {
+    margin: 0;
+    color: white;
+    font-size: 16px;
+}
